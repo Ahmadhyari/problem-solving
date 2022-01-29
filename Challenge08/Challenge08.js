@@ -27,16 +27,16 @@
 // -------------------------------------------------------------------------------------------------------
 
 const customerAndAge = (obj) => {
-    let custArr=[];
-    function Customers (name, age) {
-        this.customerName = name;
-        this.customerAge = ingredients;
-        custArr.push(this);
-    }
-for(i=0 ;i<custArr.length;i++){
-    
-    console.log(`<p> Customer Name is" ${custArr[i]} , Age ${custArr[i]} </p>` );
-}
+  let custArr = [];
+  function Customers(name, age) {
+    this.customerName = name;
+    this.customerAge = ingredients;
+    custArr.push(this);
+  }
+  for (i = 0; i < custArr.length; i++) {
+
+    console.log(`<p> Customer Name is" ${custArr[i]} , Age ${custArr[i]} </p>`);
+  }
 };
 
 // -------------------------------------------------------------------------------------------------------
@@ -62,10 +62,18 @@ for(i=0 ;i<custArr.length;i++){
 
 // -------------------------------------------------------------------------------------------------------
 
-const getEntries = (obj) => {
-  // write your code here
+let recipeInfo = {
+  name: "pizza",
+  ingredients: ["bread", "tomato", "chicken", "mayo"],
+  cookTime: "twoHours",
+  price: "25$",
 };
-
+function getRecipeKey() {
+  for (const property in recipeInfo) {
+    console.log(`${property}: ${recipeInfo[property]}`);
+  }
+}
+getRecipeKey();
 // -------------------------------------------------------------------------------------------------------
 // Challenge 03
 
@@ -104,10 +112,17 @@ const courses = [
 const getInfo = (arr) => {
   let coursesName = [];
   let studentsName = [];
-  // write your code here
-
+  arr.forEach(courseCount => {
+    coursesName.push(courseCount.course);
+    courseCount.Students.forEach(StudentCount => {
+      studentsName.push(StudentCount);
+    });
+  });
   return { coursesName, studentsName };
 };
+
+
+
 
 //  ------------------------------------------------------------------------------------------------------
 // Challenge 04
@@ -128,9 +143,18 @@ const getInfo = (arr) => {
 //  ------------------------------------------------------------------------------------------------------
 
 const getStudents = (arr) => {
-  // write your code here
-
+  let arrang = [];
+  arr.forEach(student => {
+    courses.forEach(course => {
+      course.Students.forEach(count => {
+        if (count === student)
+        arrang.push({ Student: student, course: course.course });
+      });
+    });
+  });
+  return result;
 };
+
 
 module.exports = {
   customerAndAge,
