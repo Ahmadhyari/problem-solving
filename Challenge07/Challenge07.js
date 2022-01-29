@@ -19,18 +19,19 @@
 // ------------------------
 
 const objLat = (obj) => {
-   let obj = {
-             firstName: "Ali",
-             lastName: "Ahmad",
-             age: 95,
-             hobby: "Reading",
-        
+    let obj = {
+        firstName: "Ali",
+        lastName: "Ahmad",
+        age: 95,
+        hobby: "Reading",
 
-    allInformation :function () {
-        console.log(`my name is ${this.firstName ,this.lastName} I am ${this.age} YO, and I love ${this.hobby} .)   `);
+
+        allInformation: function () {
+            console.log(`my name is ${this.firstName, this.lastName} I am ${this.age} YO, and I love ${this.hobby}`);
+
+        }
     }
-}
-obj.allInformation();
+    obj.allInformation();
 };
 
 // 2) ---------------------
@@ -94,29 +95,29 @@ obj.allInformation();
 
 // ------------------------
 const cvFormatter = (arr) => {
-    acceptedCvs=[];
-    function cvAccepted (firstName,LastName,yearsOfExperience,tech) {
-        this.appName=firstName;
-        this.appLastName=lastName;
-        this.exYrs=yearsOfExperience;
-        this.techo=tech;
-        if (exYrs>=1 ){
-            acceptedCvs.push(this.fullName ,this.techo);   
+    acceptedCvs = [];
+    function cvAccepted(firstName, LastName, yearsOfExperience, tech) {
+        this.appName = firstName;
+        this.appLastName = lastName;
+        this.exYrs = yearsOfExperience;
+        this.techo = tech;
+        if (exYrs >= 1) {
+            acceptedCvs.push(this.fullName, this.techo);
         }
-        
+
     }
-let jasonCv =new cvAccepted (Jason,James,20,"JS");
-let shiraCv =new cvAccepted (Shira,null,5, ".Net");
-let dmitriCv =new cvAccepted (Dmitri,Akkerman ,1,"Python");
-let isabellaCv =new cvAccepted (Isabella ,null, 7,"Java");
-    
-if (firstName != "null" && lastName !="null" ){
-fullName =(firstName + lastName);
-}else if (firstName != "null"){
-    fullName=firstName;
-}else {
-    fullName=lastName;
-}
+    let jasonCv = new cvAccepted(Jason, James, 20, "JS");
+    let shiraCv = new cvAccepted(Shira, null, 5, ".Net");
+    let dmitriCv = new cvAccepted(Dmitri, Akkerman, 1, "Python");
+    let isabellaCv = new cvAccepted(Isabella, null, 7, "Java");
+
+    if (cvAccepted.appName != "null" && cvAccepted.appLastName != "null") {
+        fullName = (cvAccepted.appName + cvAccepted.appLastName);
+    } else if (cvAccepted.appName != "null") {
+        fullName = cvAccepted.appName;
+    } else {
+        fullName = cvAccepted.appLastName;
+    }
 };
 
 // 3) ---------------------
@@ -125,12 +126,12 @@ fullName =(firstName + lastName);
 //  using the array of object you will be getting, return an object that has the following properties
 //
 // let result = {
-//     python_Devs: 0,
-//     javaScript_Devs: 0,
-//     dotNet_Devs: 0,
-//     java_Devs: 0,
-//     totalApplicants: 0,
-//     rejectedApplicants: 0,
+// python_Devs: 0,
+// javaScript_Devs: 0,
+// dotNet_Devs: 0,
+// java_Devs: 0,
+// totalApplicants: 0,
+// rejectedApplicants: 0,
 // }
 //
 // and fill it up based on the results
@@ -140,7 +141,42 @@ fullName =(firstName + lastName);
 
 // ------------------------
 const applicationsStatics = (arr) => {
-    // write your code here
+
+    let result = {
+        python_Devs: 0,
+        javaScript_Devs: 0,
+        dotNet_Devs: 0,
+        java_Devs: 0,
+        totalApplicants: 0,
+        rejectedApplicants: 0,
+    }
+
+
+    for (let i = 0; i < acceptedCvs.length; i++) {
+        if ((acceptedCvs[i].firstName == "null" || acceptedCvs[i].firstName == "") && (acceptedCvs[i].lastName == "null" || acceptedCvs[i].lastName == "")) {
+            rejectedApplicants = rejectedApplicants + 1;
+        }
+
+        if (acceptedCvs[i].techo == "JS") {
+            result.javaScript_Devs = result.javaScript_Devs + 1;
+        }
+
+
+        if (acceptedCvs[i].tech == ".Net") {
+            result.dotNet_Devs = result.dotNet_Devs + 1;
+        }
+
+        if (acceptedCvs[i].tech == "Python") {
+            result.python_Devs = result.python_Devs + 1;
+        }
+
+        if (acceptedCvs[i].tech == "Java") {
+            result.java_Devs = result.java_Devs + 1;
+        }
+
+    }
+    return result;
+
 };
 
 // 4) ---------------------
@@ -265,7 +301,16 @@ let data = {
 //  2- You need to round the average to the nearest lower number 
 
 const classesAvg = (data) => {
-    // write your code here
+
+    for (let i = 0; i < data.grades[i].length; i++) {
+        for (let h = 0; h < data.grades[i].classes.length; h++) {
+            let average = (arr) => arr.reduce((s , d) => s + d) / arr.length;
+            data.grades[i].classes[h].avg = Math.floor(average(data.grades[i].classes[h].classScores));
+
+
+        }
+    }
+    return data;
 };
 
 module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
